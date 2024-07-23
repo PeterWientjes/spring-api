@@ -14,3 +14,9 @@ spring:
     tomcat:
       test-while-idle: true
       validation-query: SELECT 1
+  jpa:
+#    hibernate:
+#      ddl-auto: validate # Validate the db on startup
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true # Because order is reserved word

@@ -15,6 +15,10 @@ COPY settings.gradle.kts .
 # Copy the source code
 COPY src src
 
+#This is a fix for a windowsbug with ./gradlew (can be ignored when not running windows)
+RUN apt-get install dos2unix
+RUN dos2unix ./gradlew
+
 # Grant execute permission for the gradle wrapper and build the JAR file using arguments
 RUN chmod +x ./gradlew && \
     ./gradlew --no-daemon --no-watch-fs bootJar -x test
